@@ -4,6 +4,8 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import { Settings } from "./pages/Settings/Settings";
+import { ThemeProvider } from "./components/theme-provider";
 
 const router = createBrowserRouter([
   {
@@ -13,6 +15,10 @@ const router = createBrowserRouter([
   {
     path: "/boiolinha",
     element: <div>Boiolinha</div>,
+  },
+  {
+    path: "/settings",
+    element: <Settings />,
   }
 ]);
 
@@ -20,7 +26,9 @@ function App() {
 
   return (
     <main>
-      <RouterProvider router={router} />
+      <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+        <RouterProvider router={router} />
+      </ThemeProvider>
     </main>
 
   );
