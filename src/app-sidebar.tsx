@@ -1,4 +1,4 @@
-import { Calendar, Home, Inbox, Search, Settings, Book, Map } from "lucide-react"
+import { Calendar, Home, Inbox, Search, Settings, Book, Map, Moon, Sun } from "lucide-react"
 
 import {
   Sidebar,
@@ -10,6 +10,9 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
+
+import { useTheme } from "./components/theme-provider"
+import { Toggle } from "./components/ui/toggle"
 
 // Menu items.
 const items = [
@@ -36,6 +39,12 @@ const items = [
 ]
 
 export function AppSidebar() {
+  const { setTheme,  theme} = useTheme()
+
+  const handleThemeChange = (changed: boolean) => {
+    setTheme(theme === "light" ? "dark" : "light")
+  }
+
   return (
     <Sidebar variant="inset" collapsible="icon"> 
       <SidebarContent>
@@ -55,6 +64,9 @@ export function AppSidebar() {
               ))}
             </SidebarMenu>
           </SidebarGroupContent>
+          <Toggle size="sm" aria-label="Toggle italic" onPressedChange={handleThemeChange}>
+       {theme === "light" ? <Moon /> : <Sun />}
+     </Toggle>
         </SidebarGroup>
       </SidebarContent>
     </Sidebar>
