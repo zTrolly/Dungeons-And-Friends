@@ -2,5 +2,5 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
 fn main() {
-    dungeons_and_friends_lib::run()
+    dugeons_and_friends_lib::run()
 }
